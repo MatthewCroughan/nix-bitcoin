@@ -13,6 +13,7 @@ let
   pluginPkgs = config.nix-bitcoin.pkgs.clightning-plugins;
 in {
   imports = [
+    ./trustedcoin.nix
     ./clboss.nix
     ./commando.nix
     ./feeadjuster.nix

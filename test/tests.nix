@@ -57,6 +57,7 @@ let
         nbPkgs = config.nix-bitcoin.pkgs;
         pluginPkgs = nbPkgs.clightning-plugins // {
           clboss.path = "${nbPkgs.clboss}/bin/clboss";
+          trustedcoin.path = "${nbPkgs.trustedcoin}/bin/trustedcoin";
         };
       in map (plugin: pluginPkgs.${plugin}.path) enabled;
       # Torified 'dig' subprocesses of clboss don't respond to SIGTERM and keep
@@ -148,6 +149,7 @@ let
     }
     (mkIf config.test.features.clightningPlugins {
       services.clightning.plugins = {
+        trustedcoin.enable = true;
         clboss.enable = true;
         feeadjuster.enable = true;
         helpme.enable = true;
